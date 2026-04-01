@@ -10,7 +10,28 @@ export default function CategoryBreakdown({ stats }) {
         <p className="text-blue-200 text-xs sm:text-sm">{sortedCategories.length} allergen categories tested</p>
       </div>
 
-      <div className="space-y-2 max-h-[500px] sm:max-h-[600px] overflow-y-auto pr-1 sm:pr-2 custom-scrollbar">
+      <style>{`
+        .category-scroll::-webkit-scrollbar {
+          width: 8px !important;
+        }
+        .category-scroll::-webkit-scrollbar-track {
+          background: transparent !important;
+        }
+        .category-scroll::-webkit-scrollbar-thumb {
+          background: rgba(96, 165, 250, 0.3) !important;
+          border-radius: 10px !important;
+          border: none !important;
+        }
+        .category-scroll::-webkit-scrollbar-thumb:hover {
+          background: rgba(96, 165, 250, 0.5) !important;
+        }
+        .category-scroll {
+          scrollbar-width: thin !important;
+          scrollbar-color: rgba(96, 165, 250, 0.3) transparent !important;
+        }
+      `}</style>
+
+      <div className="category-scroll space-y-2 max-h-[500px] sm:max-h-[600px] overflow-y-auto pr-1 sm:pr-2">
         {sortedCategories.map(([category, categoryStats]) => {
           const allergicPercent = (categoryStats.allergic / categoryStats.total) * 100;
           const safePercent = (categoryStats.nonAllergic / categoryStats.total) * 100;
