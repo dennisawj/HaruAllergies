@@ -1,265 +1,117 @@
-export const allergies = [
-  // Environment - High Sensitivity
-  { id: 1, name: "Aeschynanthus", category: "Environment", severity: "High", percentage: 100, type: "Plant" },
-  { id: 2, name: "African Violet", category: "Environment", severity: "High", percentage: 99, type: "Plant" },
-  { id: 3, name: "Asiatic Pennywort", category: "Environment", severity: "High", percentage: 96, type: "Plant" },
-  { id: 4, name: "Bermuda Grass", category: "Environment", severity: "High", percentage: 100, type: "Plant" },
-  { id: 5, name: "Cactus", category: "Environment", severity: "High", percentage: 100, type: "Plant" },
-  { id: 6, name: "Casuarina Tree", category: "Environment", severity: "High", percentage: 100, type: "Tree" },
-  { id: 7, name: "Chiku Tree", category: "Environment", severity: "High", percentage: 100, type: "Tree" },
-  { id: 8, name: "Climbing Jasmine", category: "Environment", severity: "High", percentage: 100, type: "Plant" },
-  { id: 9, name: "Cotton", category: "Environment", severity: "High", percentage: 100, type: "Plant" },
-  { id: 10, name: "Cow Grass", category: "Environment", severity: "High", percentage: 100, type: "Grass" },
-  { id: 11, name: "Elephant Grass", category: "Environment", severity: "High", percentage: 99, type: "Grass" },
-  { id: 12, name: "Fleece", category: "Environment", severity: "High", percentage: 100, type: "Material" },
-  { id: 13, name: "Fuchsia", category: "Environment", severity: "High", percentage: 99, type: "Plant" },
-  { id: 14, name: "Giant Sword Fern", category: "Environment", severity: "High", percentage: 100, type: "Fern" },
-  { id: 15, name: "Lalang", category: "Environment", severity: "High", percentage: 100, type: "Grass" },
-  { id: 16, name: "Madagascar Almond Tree", category: "Environment", severity: "High", percentage: 100, type: "Tree" },
-  { id: 17, name: "Mangosteen Tree", category: "Environment", severity: "High", percentage: 99, type: "Tree" },
-  { id: 18, name: "Mempat Tree", category: "Environment", severity: "High", percentage: 99, type: "Tree" },
-  { id: 19, name: "Morning Glory", category: "Environment", severity: "High", percentage: 96, type: "Plant" },
-  { id: 20, name: "Pagoda Flower", category: "Environment", severity: "High", percentage: 100, type: "Plant" },
-  { id: 21, name: "Petunia", category: "Environment", severity: "High", percentage: 100, type: "Plant" },
-  { id: 22, name: "Pilea", category: "Environment", severity: "High", percentage: 100, type: "Plant" },
-  { id: 23, name: "Pink Shower Tree", category: "Environment", severity: "High", percentage: 97, type: "Tree" },
-  { id: 24, name: "Sunflower", category: "Environment", severity: "High", percentage: 100, type: "Plant" },
-  { id: 25, name: "Synthetic Rubber", category: "Environment", severity: "High", percentage: 100, type: "Material" },
-  { id: 26, name: "Yellow Flame Tree", category: "Environment", severity: "High", percentage: 100, type: "Tree" },
+// Complete allergen data from PAX Complete test
+// Classification: Score >= 24-26 range (more than 25 or close ±1) = ALLERGIC
+// Score < 24 or > 26 = Safe/Borderline
 
-  // Environment - Moderate Sensitivity
-  { id: 27, name: "Bird's Nest Fern", category: "Environment", severity: "Moderate", percentage: 88, type: "Fern" },
-  { id: 28, name: "Bodhi Tree", category: "Environment", severity: "Moderate", percentage: 90, type: "Tree" },
-  { id: 29, name: "Canna Lily", category: "Environment", severity: "Moderate", percentage: 88, type: "Plant" },
-  { id: 30, name: "Cineraria", category: "Environment", severity: "Moderate", percentage: 91, type: "Plant" },
-  { id: 31, name: "Fiddlewood", category: "Environment", severity: "Moderate", percentage: 89, type: "Plant" },
-  { id: 32, name: "Gardenia", category: "Environment", severity: "Moderate", percentage: 85, type: "Plant" },
-  { id: 33, name: "Golden Dewdrop", category: "Environment", severity: "Moderate", percentage: 92, type: "Plant" },
-  { id: 34, name: "House Dust", category: "Environment", severity: "Moderate", percentage: 86, type: "Allergen" },
-  { id: 35, name: "Simpor Tree", category: "Environment", severity: "Moderate", percentage: 91, type: "Tree" },
-  { id: 36, name: "Spiderwort", category: "Environment", severity: "Moderate", percentage: 92, type: "Plant" },
-  { id: 37, name: "Sweet Potato Vine", category: "Environment", severity: "Moderate", percentage: 89, type: "Plant" },
+export const allergenData = [
+  // GRASSES
+  { id: 1, name: "Bahia", category: "Grasses", score: 21.79, status: "Safe" },
+  { id: 2, name: "Bermuda", category: "Grasses", score: 21.88, status: "Safe" },
+  { id: 3, name: "Bluegrass/June", category: "Grasses", score: 22.57, status: "Safe" },
+  { id: 4, name: "Cultivated Rye", category: "Grasses", score: 25.03, status: "Allergic" },
+  { id: 5, name: "Johnson", category: "Grasses", score: 23.34, status: "Safe" },
+  { id: 6, name: "Meadow Fescue", category: "Grasses", score: 25.50, status: "Allergic" },
+  { id: 7, name: "Orchard", category: "Grasses", score: 21.92, status: "Safe" },
+  { id: 8, name: "Perennial Rye", category: "Grasses", score: 19.23, status: "Safe" },
+  { id: 9, name: "Timothy", category: "Grasses", score: 25.91, status: "Allergic" },
 
-  // Grains & Others - High Sensitivity
-  { id: 38, name: "Honey", category: "Grains & Others", severity: "High", percentage: 99, type: "Food" },
-  { id: 39, name: "Oat", category: "Grains & Others", severity: "High", percentage: 95, type: "Grain" },
-  { id: 40, name: "Pea Flour", category: "Grains & Others", severity: "High", percentage: 97, type: "Flour" },
+  // WEEDS
+  { id: 10, name: "Annual Mercury", category: "Weeds", score: 18.81, status: "Safe" },
+  { id: 11, name: "Dock/Sorrel", category: "Weeds", score: 23.64, status: "Safe" },
+  { id: 12, name: "English Plantain", category: "Weeds", score: 24.97, status: "Allergic" },
+  { id: 13, name: "Lamb's Quarter", category: "Weeds", score: 24.96, status: "Allergic" },
+  { id: 14, name: "Mugwort", category: "Weeds", score: 25.63, status: "Allergic" },
+  { id: 15, name: "Nettle", category: "Weeds", score: 20.90, status: "Safe" },
+  { id: 16, name: "Pigweed", category: "Weeds", score: 25.94, status: "Allergic" },
+  { id: 17, name: "Ragweed", category: "Weeds", score: 25.33, status: "Allergic" },
+  { id: 18, name: "Russian Thistle", category: "Weeds", score: 24.77, status: "Allergic" },
+  { id: 19, name: "Wall Pellitory", category: "Weeds", score: 24.70, status: "Allergic" },
 
-  // Nuts & Seeds - High Sensitivity
-  { id: 41, name: "Hazelnut", category: "Nuts & Seeds", severity: "High", percentage: 95, type: "Nut" },
+  // TREES
+  { id: 20, name: "Acacia", category: "Trees", score: 23.87, status: "Safe" },
+  { id: 21, name: "Alder", category: "Trees", score: 21.60, status: "Safe" },
+  { id: 22, name: "Arizona Cypress", category: "Trees", score: 25.23, status: "Allergic" },
+  { id: 23, name: "Ash", category: "Trees", score: 23.67, status: "Safe" },
+  { id: 24, name: "Beech", category: "Trees", score: 24.58, status: "Allergic" },
+  { id: 25, name: "Cottonwood", category: "Trees", score: 20.35, status: "Safe" },
+  { id: 26, name: "Cypress", category: "Trees", score: 21.69, status: "Safe" },
+  { id: 27, name: "Hazelnut", category: "Trees", score: 25.24, status: "Allergic" },
+  { id: 28, name: "Japanese Cedar", category: "Trees", score: 23.71, status: "Safe" },
+  { id: 29, name: "London Plane", category: "Trees", score: 25.94, status: "Allergic" },
+  { id: 30, name: "Mountain/Red Cedar", category: "Trees", score: 18.43, status: "Safe" },
+  { id: 31, name: "Mulberry", category: "Trees", score: 22.35, status: "Safe" },
+  { id: 32, name: "Olive", category: "Trees", score: 26.04, status: "Allergic" },
+  { id: 33, name: "Privet", category: "Trees", score: 24.05, status: "Allergic" },
+  { id: 34, name: "Silver Birch", category: "Trees", score: 23.84, status: "Safe" },
+  { id: 35, name: "Walnut", category: "Trees", score: 25.61, status: "Allergic" },
 
-  // Nuts & Seeds - Moderate Sensitivity
-  { id: 42, name: "Pistachio", category: "Nuts & Seeds", severity: "Moderate", percentage: 88, type: "Nut" },
-  { id: 43, name: "Walnut", category: "Nuts & Seeds", severity: "Moderate", percentage: 89, type: "Nut" },
+  // MOLDS & YEASTS
+  { id: 36, name: "Alternaria", category: "Molds & Yeasts", score: 24.79, status: "Allergic" },
+  { id: 37, name: "Aspergillus", category: "Molds & Yeasts", score: 24.18, status: "Allergic" },
+  { id: 38, name: "Cladosporium", category: "Molds & Yeasts", score: 22.06, status: "Safe" },
+  { id: 39, name: "Malassezia", category: "Molds & Yeasts", score: 24.87, status: "Allergic" },
+  { id: 40, name: "Penicillium", category: "Molds & Yeasts", score: 19.68, status: "Safe" },
 
-  // Herbs & Spices - High Sensitivity
-  { id: 44, name: "Lemongrass", category: "Herbs & Spices", severity: "High", percentage: 100, type: "Herb" },
+  // VENOMS & INSECTS
+  { id: 41, name: "Ant Venom", category: "Venoms", score: 20.53, status: "Safe" },
+  { id: 42, name: "Fire Ant Venom", category: "Venoms", score: 20.53, status: "Safe" },
+  { id: 43, name: "Bee Venom", category: "Venoms", score: 25.01, status: "Allergic" },
+  { id: 44, name: "Common Wasp Venom", category: "Venoms", score: 25.87, status: "Allergic" },
+  { id: 45, name: "Long-headed Wasp Venom", category: "Venoms", score: 25.30, status: "Allergic" },
 
-  // Fruits - High Sensitivity
-  { id: 45, name: "Apple", category: "Fruits", severity: "High", percentage: 97, type: "Fruit" },
-  { id: 46, name: "Durian", category: "Fruits", severity: "High", percentage: 97, type: "Fruit" },
-  { id: 47, name: "Goji Berry", category: "Fruits", severity: "High", percentage: 100, type: "Berry" },
-  { id: 48, name: "Mango", category: "Fruits", severity: "High", percentage: 100, type: "Fruit" },
-  { id: 49, name: "Raspberry", category: "Fruits", severity: "High", percentage: 100, type: "Berry" },
+  // FLEA
+  { id: 46, name: "Cat Flea", category: "Flea", score: 21.27, status: "Safe" },
 
-  // Fruits - Moderate Sensitivity
-  { id: 50, name: "Fig", category: "Fruits", severity: "Moderate", percentage: 93, type: "Fruit" },
-  { id: 51, name: "Kiwi", category: "Fruits", severity: "Moderate", percentage: 91, type: "Fruit" },
-
-  // Vegetables - High Sensitivity
-  { id: 52, name: "Artichoke", category: "Vegetables", severity: "High", percentage: 100, type: "Vegetable" },
-  { id: 53, name: "Bell Peppers", category: "Vegetables", severity: "High", percentage: 95, type: "Vegetable" },
-  { id: 54, name: "Cucumber", category: "Vegetables", severity: "High", percentage: 100, type: "Vegetable" },
-  { id: 55, name: "Lotus Root", category: "Vegetables", severity: "High", percentage: 95, type: "Root" },
-  { id: 56, name: "Pumpkin", category: "Vegetables", severity: "High", percentage: 100, type: "Vegetable" },
-  { id: 57, name: "Snow Pea", category: "Vegetables", severity: "High", percentage: 100, type: "Vegetable" },
-  { id: 58, name: "Spinach", category: "Vegetables", severity: "High", percentage: 100, type: "Leafy Green" },
-
-  // Vegetables - Moderate Sensitivity
-  { id: 59, name: "Corn", category: "Vegetables", severity: "Moderate", percentage: 89, type: "Vegetable" },
-
-  // Fish - High Sensitivity
-  { id: 60, name: "Kunning", category: "Fish", severity: "High", percentage: 100, type: "Fish" },
-  { id: 61, name: "Red Snapper", category: "Fish", severity: "High", percentage: 100, type: "Fish" },
-  { id: 62, name: "Tilapia", category: "Fish", severity: "High", percentage: 100, type: "Fish" },
-
-  // Fish - Moderate Sensitivity
-  { id: 63, name: "Barramundi", category: "Fish", severity: "Moderate", percentage: 92, type: "Fish" },
-  { id: 64, name: "Sea Bream", category: "Fish", severity: "Moderate", percentage: 90, type: "Fish" },
-
-  // Seafood - High Sensitivity
-  { id: 65, name: "Oyster", category: "Seafood", severity: "High", percentage: 100, type: "Shellfish" },
-
-  // Seafood - Moderate Sensitivity
-  { id: 66, name: "Squid", category: "Seafood", severity: "Moderate", percentage: 89, type: "Cephalopod" },
-
-  // Protein - High Sensitivity
-  { id: 67, name: "Beef Liver", category: "Protein", severity: "High", percentage: 100, type: "Organ Meat" },
-  { id: 68, name: "Chicken Egg White", category: "Protein", severity: "High", percentage: 95, type: "Egg" },
-  { id: 69, name: "Chicken Liver", category: "Protein", severity: "High", percentage: 100, type: "Organ Meat" },
-  { id: 70, name: "Duck Liver", category: "Protein", severity: "High", percentage: 95, type: "Organ Meat" },
-  { id: 71, name: "Lamb", category: "Protein", severity: "High", percentage: 95, type: "Meat" },
-  { id: 72, name: "Lamb Liver", category: "Protein", severity: "High", percentage: 100, type: "Organ Meat" },
-  { id: 73, name: "Pigeon", category: "Protein", severity: "High", percentage: 100, type: "Poultry" },
-  { id: 74, name: "Pork", category: "Protein", severity: "High", percentage: 100, type: "Meat" },
-  { id: 75, name: "Quail Egg", category: "Protein", severity: "High", percentage: 96, type: "Egg" },
-  { id: 76, name: "Rabbit", category: "Protein", severity: "High", percentage: 100, type: "Meat" },
-
-  // Protein - Moderate Sensitivity
-  { id: 77, name: "Crocodile", category: "Protein", severity: "Moderate", percentage: 89, type: "Exotic Meat" },
-  { id: 78, name: "Tempeh", category: "Protein", severity: "Moderate", percentage: 91, type: "Soy Product" },
+  // MITES
+  { id: 47, name: "Dust Mite (D. farinae)", category: "Mites", score: 32.68, status: "Highly Allergic" },
+  { id: 48, name: "Dust Mite (D. pteronyssinus)", category: "Mites", score: 115.15, status: "Highly Allergic" },
+  { id: 49, name: "Acarus siro", category: "Mites", score: 106.22, status: "Highly Allergic" },
+  { id: 50, name: "B. tropicalis", category: "Mites", score: 47.41, status: "Highly Allergic" },
+  { id: 51, name: "Glycyphagus domesticus", category: "Mites", score: 23.71, status: "Safe" },
+  { id: 52, name: "Lepidoglyphus destructor", category: "Mites", score: 25.50, status: "Allergic" },
+  { id: 53, name: "Tyrophagus putrescentiae", category: "Mites", score: 21.30, status: "Safe" },
+  { id: 54, name: "Storage Mite (Tyrophagus)", category: "Mites", score: 21.30, status: "Safe" }
 ];
 
-// Complete tested items from the allergy reports
-export const testedItems = {
-  // Environment
-  Environment: {
-    // Trees
-    Trees: [
-      "Angsana", "Banyan Tree", "Belimbing", "Belinjau Tree", "Bird of Paradise Tree", "Bodhi Tree", "Bottlebrush", "Flame Tree", "Casuarina", "Casuarina Tree", "Cannon Ball Tree", "Chempaka", "Chengal", "Chiku Tree", "Coconut Palm", "Common Pulai", "Cork Tree", "Flame of the Forest", "Frangipani", "Saga Tree", "Indian Coral", "Jackfruit", "Jaboticaba", "Jelutong", "Kapok", "Kelat", "Ketapang", "Tempus", "Kelapa", "Madagascar Almond", "Mangosteen", "Merapat", "Merbau", "Monkey Pod Tree", "Oil Palm", "Penaga", "Penaga Laut", "Pink Shower Tree", "Pulasan", "Rain Tree", "Rambutan", "Saga Tree", "Soap Palm", "Senegal Mahogany", "Sea Apple", "Strangler Fig", "Tamarind", "Tualang", "Traveller's Palm", "Trumpet Tree", "Weeping Fig", "Yellow Flame"
-    ],
-    // Common Flowers & Vines
-    "Common Flowers & Vines": [
-      "Bird of Paradise", "Canna Lily", "Cape Lily", "Cockscomb", "Coral Vine", "Dahlia", "Flame Lily", "Gardenia", "Golden Dewdrop", "Golden Trumpet Vine", "Hibiscus", "Ivy Gourd", "Lotus", "Marigold", "Money Plant", "Morning Glory", "Bougainvillea Vine", "Orchid", "Passion Fruit", "Petunia", "Red Ginger", "Spider Plant", "Sweet Potato", "Sweet Potato Vine", "Torch Ginger", "Verbena", "Water Lily", "Zinnia"
-    ],
-    // Houseplants
-    Houseplants: [
-      "Aeschynanthus", "African Iris", "African Violet", "Anthurium", "Arrowhead Plant", "Bamboo Palm", "Bromeliad", "Cactus", "Cineraria", "Croton", "Dieffenbachia", "Edelweiss", "Fuchsia", "Geranium", "Haworthia", "Mimosa Pudica", "Pilea", "Spiderflora", "Spiderwort", "String of Pearls"
-    ],
-    // Shrubs & Bushes
-    "Shrubs & Bushes": [
-      "Alamanda", "Bird's Nest Fern", "Bougainvillea", "Butterfly Pea", "Crown of Thorns", "Climbing Jasmine", "Fiddlewood", "Golden Dewdrop", "Hibiscus", "Ixora", "Jasmine", "Lantana", "Oleander", "Pagoda Flower", "Peacock Flower", "Red Ixora", "Scarlet Bush", "Sea Hibiscus", "Senna", "Silver Bush", "Singapore Holly", "Star Jasmine", "Stephanotis Floribundensis", "Wax Flower", "Yellow Bells"
-    ],
-    // Grasses & Groundcovers
-    "Grasses & Groundcovers": [
-      "Asiatic Pennywort", "Bermuda Grass", "Blue Daze", "Buffalo Grass", "Centipede Grass", "Cow Grass", "Creeping Charlie", "Dichondra", "Elephant Grass", "Giant Sword Fern", "Lalang", "Liriope", "Mondo Grass", "Peanut Plant", "Purple Fountain Grass", "Singapore Daisy", "Spider Lily"
-    ],
-    // Fibres & Materials
-    "Fibres & Materials": [
-      "Acrylic Fabric", "Cotton", "Fleece", "Hemp Fabric", "Jute", "Leather", "Linen", "Nylon", "Silk", "Synthetic Rubber", "Wool"
-    ],
-    // Dust & Particles
-    "Dust & Particles": [
-      "Cement Dust", "Dust Mites", "House Dust"
-    ],
-    // Synthetic Materials & Plastics
-    "Synthetic Materials & Plastics": [
-      "Latex", "Polyethene", "Polypropylene", "Polyurethane Foam", "PVC (Polyvinyl Chloride)", "Silicone", "Vinyl"
-    ]
-  },
-  
-  // Food Items
-  Food: {
-    // Grains, Flour & Others
-    "Grains, Flour & Others": [
-      "Barley", "Brown Rice", "Carob powder", "Cornmeal", "Flour", "Honey", "Maple Syrup", "Millet", "Oat", "Pea Flour", "Rice", "Rye", "White Bread", "White Rice", "Whole Wheat Flour", "Yeast"
-    ],
-    // Dairy
-    Dairy: [
-      "Cheddar Cheese", "Cottage Cheese", "Cow's Milk", "Egg White", "Cream cheese", "Goat's Milk", "Gouda", "Greek Yogurt", "Kefir", "Mozzarella cheese", "Paneer", "Parmesan cheese"
-    ],
-    // Vegetables
-    Vegetables: [
-      "Bell Peppers", "Bitter gourd", "Broccoli", "Cabbage", "Carrot", "Cauliflower", "Celery", "Chinese Broccoli (Kai Lan)", "Chinese Cabbage (Bok Choy, Xiao Bai Cai)", "Chinese Long Cabbage (Chye Sim)", "Corn", "Cucumber", "Eggplant", "Kale", "Lady's Finger (Okra)", "Lettuce", "Mung Bean Sprouts", "Mushroom (Shiitake)", "Onion", "Pumpkin", "Snow Pea", "Spinach", "Sweet Potato", "Taro (Yam)", "Tomato", "White Radish", "Zucchini"
-    ],
-    // Herbs & Spices
-    "Herbs & Spices": [
-      "Anise", "Basil", "Cardamom", "Coriander (Cilantro)", "Dill", "Fennel", "Lemongrass", "Mint", "Oregano", "Parsley", "Rosemary", "Thyme", "Vanilla"
-    ],
-    // Oils
-    Oils: [
-      "Butter", "Canola Oil", "Coconut Oil", "Olive Oil", "Sesame Oil", "Sunflower Oil"
-    ],
-    // Seasoning
-    Seasoning: [
-      "Oyster Sauce", "Salt", "Soy Sauce"
-    ],
-    // Nuts & Seeds
-    "Nuts & Seeds": [
-      "Cashew Nut", "Chestnut", "Chia Seed", "Flaxseed", "Hazelnut", "Hemp Seed", "Peanut", "Pecan", "Pumpkin Seed", "Sesame Seed", "Sunflower Seed", "Walnut"
-    ],
-    // Legumes
-    Legumes: [
-      "Adzuki Bean", "Black Bean", "Chickpea", "Edamame", "Lentil", "Long Bean (Green)", "Pea (Green)", "Red Bean", "Soybean"
-    ],
-    // Protein
-    Protein: [
-      "Bacon", "Beef", "Beef Liver", "Chicken", "Chicken Egg White", "Chicken Egg Yolk", "Chicken Heart", "Chicken Liver", "Crocodile", "Duck", "Duck Heart", "Duck Liver", "Frog", "Goose", "Kangaroo", "Lamb", "Lamb Heart", "Ostrich", "Pheasant", "Pigeon", "Pork", "Pork Liver", "Quail", "Quail Egg", "Rabbit", "Tempeh", "Turkey", "Venison"
-    ],
-    // Fishes
-    Fishes: [
-      "Anchovy", "Atlantic Salmon", "Barramundi", "Carp", "Catfish", "Eel (Unagi)", "Halibut", "Herring", "King Fish (Batang)", "Mackerel", "Mackerel (Saba)", "Milkfish", "Pomfret", "Red Grouper", "Red Snapper", "Salmon", "Sea Bream", "Sea Bass", "Selar (Scallop)", "Silver Pomfret", "Tilapia", "Tuna", "White Fish", "Yellow Leaf Fish (Telaknamo)", "Yellow Croaker"
-    ],
-    // Seafood
-    Seafood: [
-      "Abalone", "Clam", "Crab", "Crayfish", "Green Lip Mussel", "Lobster", "Octopus", "Oyster", "Scallop", "Shrimp", "Squid"
-    ],
-    // Fruits
-    Fruits: [
-      "Apple", "Apricot", "Banana", "Blackberry", "Blueberry", "Cherry", "Coconut", "Date", "Dragon Fruit (White)", "Durian", "Fig", "Goji Berry", "Grape", "Grapefruit", "Honeydew", "Jackfruit", "Kiwi", "Lemon", "Mango", "Nectarine", "Papaya", "Peach (White)", "Pear", "Persimmon", "Pineapple", "Plum", "Pomelo", "Raspberry", "Rambutan (Cantaloupe)", "Strawberry", "Watermelon"
-    ]
-  },
-  
-  // Vitamin & Mineral Imbalances
-  "Vitamin & Mineral Imbalances": {
-    Calcium: "Sources include dark leafy greens, oranges, broccoli, almonds, tofu",
-    Chromium: "Sources include bread to over fish, meat, broccoli, mushrooms, green beans",
-    Glutamine: "Sources include poultry, organ meat liver, kidney, heart, eggs",
-    Iodine: "Sources include seaweed, fish, dairy products, baked salt",
-    Iron: "Sources include dark leafy greens, beans, olives, navy beans, kidney beans, black beans, pinto beans, tofu, pumpkin",
-    Lecithin: "Sources include eggs, soybeans, kidney, liver, whole grains, milk",
-    Magnesium: "Sources include citrus, onion, parsnips, pear pumpkin, pear peas, green leafy, pineapple & dark leafy greens",
-    Manganese: "Sources include almonds, apricots, rocket, oats, cloves, oranges, bananas, avocados, asparagus, beetroot",
-    Molybdenum: "Sources include lentils, dried peas, kidney beans, lima beans, pinto beans, cucumber, sweet potato, lettuce, coconut, celery, barley, eggs, carrots, dill, peppers",
-    Potassium: "Sources include avocado, spinach, sweet potato, white beans, bananas, dried apricots, mushroom, almonds, beetroot, brazil nuts, broccoli, brown rice",
-    Selenium: "Sources include tuna, chicken, wheat germ, oats, asparagus, turkey, chicken, lamb, scallops, beef, barley, tofu, brown rice, sunflower seeds, sesame seeds",
-    Silica: "Sources include whole grains, pasta, brown rice, banana, mango, green beans, spinach, strawberries",
-    "Vitamin A": "Sources include apricot, broccoli, Brussels sprout, butter milk, bacon, cantaloupe, carrot, cod liver oil, egg peppers, and dark leafy greens",
-    "Vitamin B1": "Sources include starfruit, sunflower seeds, green peas, brussel, oval cabbage, spinach, cabbage, eggplant, Quinoa lettuce, pinto beans, black beans, navy, lentils",
-    "Vitamin B2": "Sources include almonds, spinach, asparagus, sea vegetables, eggs, cows milk, broccoli, swiss chard",
-    "Vitamin B3": "Sources include dark meat, sardines, salmon, lamb, beef, asparagus, tomato, bell peppers, sardines, shrimp, brown rice, sweet potato, sun flower seeds, barley, green peas",
-    "Vitamin B5": "Sources include cauliflower, sweet potato, broccoli, turnip greens, salmon, asparagus, bell peppers, cucumber, celery, avocado, herbs, chicken, turkey, yogurt, carrots",
-    "Vitamin B6": "Sources include fish, beef liver, starchy vegetables, and non-citrus fruits",
-    "Vitamin B12": "Sources include eggs, cows milk, almond milk, coconut milk, fish, and meat",
-    "Vitamin C": "Sources include papaya, bell peppers, broccoli, Brussels sprouts, strawberries, pineapple, oranges, kiwi, cantaloupe, cauliflower, kale, cabbage, bok choy, grapefruit, sweet chard",
-    "Vitamin D": "Sources include salmon, sardines, cows milk, tuna, eggs, shiitake mushrooms, mushrooms, sunflower seeds, sweet potato, dates",
-    "Vitamin E": "Sources include almonds, seeds, spinach, kale, and plant oils",
-    "Vitamin K": "Sources include kale, spinach, turnip greens, broccoli, Brussels sprout, romaine lettuce, asparagus, basil, cabbage, celery, kiwi, lentils, cucumbers, sage, green beans, cauliflower, cucumber"
-  }
-};
-
-// Get safe items (tested but not allergic)
-export const getSafeItems = () => {
-  const allergyNames = allergies.map(a => a.name.toLowerCase());
-  const safeItems = {};
-  
-  Object.keys(testedItems).forEach(mainCategory => {
-    if (mainCategory === "Vitamin & Mineral Imbalances") return;
-    
-    safeItems[mainCategory] = {};
-    
-    Object.keys(testedItems[mainCategory]).forEach(subCategory => {
-      const items = testedItems[mainCategory][subCategory];
-      const safe = items.filter(item => !allergyNames.includes(item.toLowerCase()));
-      if (safe.length > 0) {
-        safeItems[mainCategory][subCategory] = safe;
-      }
-    });
+// Get all unique categories
+export const getCategories = () => {
+  const categories = {};
+  allergenData.forEach(item => {
+    if (!categories[item.category]) {
+      categories[item.category] = {
+        name: item.category,
+        count: 0,
+        allergic: 0,
+        highly: 0,
+        safe: 0
+      };
+    }
+    categories[item.category].count++;
+    if (item.status === "Allergic") categories[item.category].allergic++;
+    if (item.status === "Highly Allergic") categories[item.category].highly++;
+    if (item.status === "Safe") categories[item.category].safe++;
   });
-  
-  return safeItems;
+  return categories;
 };
 
-// Only the specific vitamins/minerals from the report
-export const vitaminImbalances = {
-  "Calcium": "Sources include dark leafy greens, oranges, broccoli, almonds, tofu",
-  "Glutamine": "Sources include poultry, organ meat liver, kidney, heart, eggs", 
-  "Lecithin": "Sources include eggs, soybeans, kidney, liver, whole grains, milk",
-  "Silica": "Sources include whole grains, pasta, brown rice, banana, mango, green beans, spinach, strawberries",
-  "Vitamin B1": "Sources include starfruit, sunflower seeds, green peas, brussel, oval cabbage, spinach, cabbage, eggplant, Quinoa lettuce, pinto beans, black beans, navy, lentils",
-  "Vitamin B2": "Sources include almonds, spinach, asparagus, sea vegetables, eggs, cows milk, broccoli, swiss chard",
-  "Vitamin B6": "Sources include fish, beef liver, starchy vegetables, and non-citrus fruits",
-  "Vitamin D": "Sources include salmon, sardines, cows milk, tuna, eggs, shiitake mushrooms, mushrooms, sunflower seeds, sweet potato, dates"
+// Get items by status
+export const getItemsByStatus = (status) => {
+  return allergenData.filter(item => item.status === status);
 };
 
-export default allergies;
+// Get stats
+export const getStats = () => {
+  const total = allergenData.length;
+  const highly = allergenData.filter(i => i.status === "Highly Allergic").length;
+  const allergic = allergenData.filter(i => i.status === "Allergic").length;
+  const safe = allergenData.filter(i => i.status === "Safe").length;
+
+  return {
+    total,
+    highly,
+    allergic,
+    safe,
+    totalAllergic: highly + allergic
+  };
+};
+
+export default allergenData;
