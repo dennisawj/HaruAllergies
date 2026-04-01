@@ -1,6 +1,5 @@
 /* App-specific styles */
 
-/* Optional: Add any custom animations or styles here */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -12,4 +11,108 @@
 
 .fade-in {
   animation: fadeIn 0.3s ease-in;
+}
+
+/* SUPER VISIBLE Snowfall Animation - MAXIMUM z-index */
+.snowfall {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 9999 !important;
+}
+
+.snowfall::before,
+.snowfall::after {
+  content: "❄ ❅ ❆ ❄ ❅ ❆ ❄ ❅ ❆ ❄ ❅ ❆ ❄ ❅ ❆ ❄ ❅ ❆ ❄ ❅ ❆ ❄ ❅ ❆ ❄ ❅ ❆ ❄ ❅ ❆ ❄ ❅ ❆ ❄ ❅ ❆";
+  position: absolute;
+  top: -50%;
+  left: 0;
+  width: 100%;
+  height: 150%;
+  color: rgba(255, 255, 255, 1);
+  font-size: 36px;
+  line-height: 200px;
+  text-shadow: 
+    0 0 20px rgba(255, 255, 255, 1),
+    0 0 40px rgba(147, 197, 253, 0.9),
+    0 0 60px rgba(96, 165, 250, 0.7);
+  animation: snowfall 10s linear infinite;
+  word-spacing: 130px;
+  letter-spacing: 110px;
+  opacity: 1;
+  z-index: 9999;
+}
+
+.snowfall::after {
+  content: "❅ ❄ ❆ ❅ ❄ ❆ ❅ ❄ ❆ ❅ ❄ ❆ ❅ ❄ ❆ ❅ ❄ ❆ ❅ ❄ ❆ ❅ ❄ ❆ ❅ ❄ ❆ ❅ ❄ ❆ ❅ ❄ ❆";
+  animation-delay: 5s;
+  font-size: 28px;
+  opacity: 0.9;
+  animation-duration: 14s;
+  line-height: 220px;
+  word-spacing: 110px;
+  letter-spacing: 100px;
+}
+
+@keyframes snowfall {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* Custom Scrollbar Styling - Transparent Theme */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(96, 165, 250, 0.3);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(96, 165, 250, 0.5);
+}
+
+/* General scrollbar (fallback) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, rgba(30, 58, 138, 0.15), rgba(59, 130, 246, 0.08));
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(96, 165, 250, 0.7), rgba(59, 130, 246, 0.7));
+  border-radius: 10px;
+  border: 2px solid rgba(30, 58, 138, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(96, 165, 250, 0.9), rgba(59, 130, 246, 0.9));
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(96, 165, 250, 0.3) transparent;
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(96, 165, 250, 0.3) transparent;
 }

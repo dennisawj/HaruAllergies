@@ -3,11 +3,11 @@ import { allergyData, getCategoryStats, getAllergicItems } from "./data/allergyD
 import ScoreVisualization from "./components/ScoreVisualization.jsx";
 import CategoryBreakdown from "./components/CategoryBreakdown.jsx";
 import AllergicItemsList from "./components/AllergicItemsList.jsx";
-import Legend from "./components/Legend.jsx";
+import MusicPlayer from "./components/MusicPlayer.jsx";
+import Snowfall from "./components/Snowfall.jsx";
 
 export default function App() {
-  const [activeView, setActiveView] = useState("overview"); // overview, allergic, category
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [activeView, setActiveView] = useState("overview");
   const [searchTerm, setSearchTerm] = useState("");
 
   const categoryStats = useMemo(() => getCategoryStats(), []);
@@ -16,183 +16,143 @@ export default function App() {
   const totalAllergic = allergicItems.length;
   const allergy_percentage = ((totalAllergic / totalItems) * 100).toFixed(1);
 
-  const filteredAllergicItems = useMemo(() => {
-    return allergicItems.filter(
+  const filteredItems = useMemo(() => {
+    return allergyData.filter(
       (item) =>
         item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         item.category.toLowerCase().includes(searchTerm.toLowerCase())
     );
-  }, [searchTerm]);
+  }, [searchTerm, allergyData]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
-      {/* Header */}
-      <header className="bg-gradient-to-r from-red-600 to-orange-600 shadow-2xl">
-        <div className="max-w-7xl mx-auto px-6 py-8">
-          <div className="flex items-center gap-4 mb-4">
-            <span className="text-4xl">🐾</span>
-            <div>
-              <h1 className="text-4xl font-bold text-white">Haru's Allergy Profile</h1>
-              <p className="text-red-100 text-lg">Comprehensive Immunological Assessment</p>
-            </div>
-          </div>
+    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900 relative overflow-x-hidden">
+      {/* Subtle night gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-transparent to-cyan-900/20" style={{ zIndex: 0 }}></div>
 
-          {/* Key Metrics */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-            <div className="bg-white/20 rounded-lg p-4 backdrop-blur-sm">
-              <p className="text-red-100 text-sm font-semibold">Total Tested</p>
-              <p className="text-white text-3xl font-bold">{totalItems}</p>
-            </div>
-            <div className="bg-red-500/30 rounded-lg p-4 backdrop-blur-sm border border-red-400">
-              <p className="text-red-100 text-sm font-semibold">Allergic Items</p>
-              <p className="text-white text-3xl font-bold">{totalAllergic}</p>
-            </div>
-            <div className="bg-green-500/30 rounded-lg p-4 backdrop-blur-sm border border-green-400">
-              <p className="text-green-100 text-sm font-semibold">Safe Items</p>
-              <p className="text-white text-3xl font-bold">{totalItems - totalAllergic}</p>
-            </div>
-            <div className="bg-blue-500/30 rounded-lg p-4 backdrop-blur-sm border border-blue-400">
-              <p className="text-blue-100 text-sm font-semibold">Allergy Rate</p>
-              <p className="text-white text-3xl font-bold">{allergy_percentage}%</p>
-            </div>
-          </div>
-        </div>
-      </header>
+      {/* Canvas-based Snowfall - Should be very visible now! */}
+      <Snowfall />
 
-      {/* Navigation Tabs */}
-      <div className="sticky top-0 z-40 bg-slate-800/95 backdrop-blur-sm border-b border-slate-600 shadow-lg">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex justify-center gap-2 py-4 flex-wrap">
-            <button
-              onClick={() => setActiveView("overview")}
-              className={`px-6 py-2 rounded-lg font-semibold transition-all ${
-                activeView === "overview"
-                  ? "bg-red-600 text-white shadow-lg"
-                  : "bg-slate-700 text-slate-200 hover:bg-slate-600"
-              }`}
-            >
-              📊 Overview
-            </button>
-            <button
-              onClick={() => setActiveView("allergic")}
-              className={`px-6 py-2 rounded-lg font-semibold transition-all ${
-                activeView === "allergic"
-                  ? "bg-red-600 text-white shadow-lg"
-                  : "bg-slate-700 text-slate-200 hover:bg-slate-600"
-              }`}
-            >
-              🚨 Allergic Items ({totalAllergic})
-            </button>
-            <button
-              onClick={() => setActiveView("category")}
-              className={`px-6 py-2 rounded-lg font-semibold transition-all ${
-                activeView === "category"
-                  ? "bg-blue-600 text-white shadow-lg"
-                  : "bg-slate-700 text-slate-200 hover:bg-slate-600"
-              }`}
-            >
-              📂 By Category
-            </button>
-          </div>
-        </div>
-      </div>
+      <MusicPlayer />
 
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        {/* Overview */}
-        {activeView === "overview" && (
-          <div className="space-y-8">
-            <Legend />
-            <ScoreVisualization allergyData={allergyData} />
-            <CategoryBreakdown stats={categoryStats} onSelectCategory={setSelectedCategory} />
-          </div>
-        )}
-
-        {/* Allergic Items */}
-        {activeView === "allergic" && (
-          <div className="space-y-6">
-            {/* Search Bar */}
-            <div className="bg-slate-800 rounded-lg p-6 border border-slate-600">
-              <input
-                type="text"
-                placeholder="🔍 Search allergic items..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg bg-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-red-500"
-              />
-            </div>
-
-            {/* Results */}
-            {filteredAllergicItems.length > 0 ? (
-              <div className="grid grid-cols-1 gap-6">
-                <AllergicItemsList items={filteredAllergicItems} />
-              </div>
-            ) : (
-              <div className="bg-slate-800 rounded-lg p-8 text-center border border-slate-600">
-                <p className="text-slate-300 text-lg">No allergic items found matching your search</p>
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* Category View */}
-        {activeView === "category" && (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {Object.entries(categoryStats).map(([category, stats]) => (
-              <div
-                key={category}
-                onClick={() => {
-                  setSelectedCategory(category);
-                  setActiveView("allergic");
-                  setSearchTerm("");
-                }}
-                className="bg-gradient-to-br from-slate-800 to-slate-700 rounded-lg p-6 border border-slate-600 hover:border-slate-400 transition-all cursor-pointer hover:shadow-xl hover:shadow-slate-900/50 transform hover:scale-105"
-              >
-                <h3 className="text-xl font-bold text-white mb-4">{category}</h3>
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-slate-300">Total Tested:</span>
-                    <span className="text-white font-semibold text-lg">{stats.total}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-red-300 flex items-center gap-2">
-                      <span className="inline-block w-3 h-3 rounded-full bg-red-500"></span>
-                      Allergic:
-                    </span>
-                    <span className="text-red-400 font-semibold text-lg">{stats.allergic}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-green-300 flex items-center gap-2">
-                      <span className="inline-block w-3 h-3 rounded-full bg-green-500"></span>
-                      Safe:
-                    </span>
-                    <span className="text-green-400 font-semibold text-lg">{stats.nonAllergic}</span>
-                  </div>
-                  <div className="mt-4 bg-slate-600/50 rounded-lg p-3">
-                    <div className="w-full bg-slate-700 rounded-full h-2 overflow-hidden">
-                      <div
-                        className="bg-gradient-to-r from-red-500 to-red-600 h-full transition-all"
-                        style={{ width: `${(stats.allergic / stats.total) * 100}%` }}
-                      ></div>
+      {/* Hero Section */}
+      <div className="relative" style={{ zIndex: 10 }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-8 items-start">
+            {/* Haru's Portrait Card */}
+            <div className="lg:col-span-1">
+              <div className="bg-slate-800/40 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-blue-300/20 shadow-2xl shadow-blue-900/50">
+                <div className="aspect-square rounded-xl sm:rounded-2xl overflow-hidden mb-4 sm:mb-6 shadow-lg ring-2 ring-blue-300/20">
+                  <img
+                    src="/Haru.jpg"
+                    alt="Haru"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="text-center space-y-3 sm:space-y-4">
+                  <h1 className="text-2xl sm:text-3xl font-bold text-blue-50">Haru</h1>
+                  <p className="text-sm sm:text-base text-blue-200">Health Profile & Allergy Assessment</p>
+                  
+                  <div className="grid grid-cols-3 gap-2 sm:gap-4 pt-3 sm:pt-4">
+                    <div className="bg-slate-700/30 rounded-lg sm:rounded-xl p-2 sm:p-3 border border-blue-300/20">
+                      <div className="text-xl sm:text-2xl font-bold text-blue-50">{totalItems}</div>
+                      <div className="text-[10px] sm:text-xs text-blue-200 mt-0.5 sm:mt-1">Tested</div>
                     </div>
-                    <p className="text-slate-300 text-sm mt-2">
-                      {((stats.allergic / stats.total) * 100).toFixed(1)}% allergic
-                    </p>
+                    <div className="bg-red-900/30 rounded-lg sm:rounded-xl p-2 sm:p-3 border border-red-400/30">
+                      <div className="text-xl sm:text-2xl font-bold text-red-200">{totalAllergic}</div>
+                      <div className="text-[10px] sm:text-xs text-red-200 mt-0.5 sm:mt-1">Allergic</div>
+                    </div>
+                    <div className="bg-slate-700/30 rounded-lg sm:rounded-xl p-2 sm:p-3 border border-blue-300/20">
+                      <div className="text-xl sm:text-2xl font-bold text-blue-50">{allergy_percentage}%</div>
+                      <div className="text-[10px] sm:text-xs text-blue-200 mt-0.5 sm:mt-1">Rate</div>
+                    </div>
                   </div>
                 </div>
               </div>
-            ))}
+            </div>
+
+            {/* Main Content Area */}
+            <div className="lg:col-span-2 space-y-4 sm:space-y-6">
+              {/* Navigation Tabs */}
+              <div className="bg-slate-800/40 backdrop-blur-xl rounded-xl sm:rounded-2xl p-1.5 sm:p-2 border border-blue-300/20 flex gap-1 sm:gap-2">
+                <button
+                  onClick={() => setActiveView("overview")}
+                  className={`flex-1 py-2 sm:py-3 px-3 sm:px-6 rounded-lg sm:rounded-xl text-sm sm:text-base font-medium transition-all ${
+                    activeView === "overview"
+                      ? "bg-blue-500 text-white shadow-lg shadow-blue-500/50"
+                      : "text-blue-100 hover:bg-slate-700/50"
+                  }`}
+                >
+                  Overview
+                </button>
+                <button
+                  onClick={() => setActiveView("allergic")}
+                  className={`flex-1 py-2 sm:py-3 px-3 sm:px-6 rounded-lg sm:rounded-xl text-sm sm:text-base font-medium transition-all ${
+                    activeView === "allergic"
+                      ? "bg-blue-500 text-white shadow-lg shadow-blue-500/50"
+                      : "text-blue-100 hover:bg-slate-700/50"
+                  }`}
+                >
+                  <span className="hidden sm:inline">All Items ({totalItems})</span>
+                  <span className="sm:hidden">Items ({totalItems})</span>
+                </button>
+                <button
+                  onClick={() => setActiveView("category")}
+                  className={`flex-1 py-2 sm:py-3 px-3 sm:px-6 rounded-lg sm:rounded-xl text-sm sm:text-base font-medium transition-all ${
+                    activeView === "category"
+                      ? "bg-blue-500 text-white shadow-lg shadow-blue-500/50"
+                      : "text-blue-100 hover:bg-slate-700/50"
+                  }`}
+                >
+                  Categories
+                </button>
+              </div>
+
+              {/* Content */}
+              <div className="min-h-[40vh] sm:min-h-[60vh]">
+                {activeView === "overview" && (
+                  <ScoreVisualization allergyData={allergyData} />
+                )}
+
+                {activeView === "allergic" && (
+                  <div className="space-y-4 sm:space-y-6">
+                    <div className="bg-slate-800/40 backdrop-blur-xl rounded-xl sm:rounded-2xl p-3 sm:p-4 border border-blue-300/20">
+                      <input
+                        type="text"
+                        placeholder="Search items..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base bg-slate-700/30 border border-blue-300/20 rounded-lg sm:rounded-xl text-blue-50 placeholder-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                      />
+                    </div>
+
+                    <div className="mt-6 sm:mt-8">
+                      {filteredItems.length > 0 ? (
+                        <AllergicItemsList items={filteredItems} />
+                      ) : (
+                        <div className="bg-slate-800/40 backdrop-blur-xl rounded-xl sm:rounded-2xl p-8 sm:p-12 text-center border border-blue-300/20">
+                          <p className="text-blue-200 text-sm sm:text-base">No items found</p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                {activeView === "category" && (
+                  <CategoryBreakdown stats={categoryStats} />
+                )}
+              </div>
+            </div>
           </div>
-        )}
+        </div>
       </div>
 
       {/* Footer */}
-      <footer className="bg-slate-900 border-t border-slate-700 mt-16 py-8">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <p className="text-slate-400">
-            Allergy Classification: Score ≥ 24 or ≤ 26 (covers {`>`}25 ±1) = ALLERGIC
+      <footer className="relative border-t border-blue-300/10 bg-slate-900/40 backdrop-blur-sm mt-8 sm:mt-12 py-6 sm:py-8" style={{ zIndex: 10 }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
+          <p className="text-blue-200 text-xs sm:text-sm">
+            Comprehensive Allergy Assessment — {totalAllergic} of {totalItems} items identified as allergenic
           </p>
-          <p className="text-slate-500 text-sm mt-2">
+          <p className="text-blue-300/60 text-[10px] sm:text-xs mt-1 sm:mt-2">
             Always consult with a veterinarian before making dietary or environmental changes.
           </p>
         </div>

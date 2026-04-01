@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { FiInfo, FiTarget } from 'react-icons/fi';
+import { FiTarget } from 'react-icons/fi';
 
 export default function VitaminMineralPanel({ vitaminData }) {
   const [hoveredItem, setHoveredItem] = useState(null);
@@ -54,20 +54,20 @@ export default function VitaminMineralPanel({ vitaminData }) {
 
   return (
     <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-4">
-        <div className="flex items-center gap-3">
-          <span className="text-2xl">💊</span>
+      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-3 md:p-4">
+        <div className="flex items-center gap-2 md:gap-3">
+          <span className="text-xl md:text-2xl">💊</span>
           <div>
-            <h3 className="text-lg font-bold text-gray-800">Vitamin & Mineral Imbalances</h3>
-            <p className="text-sm text-gray-600">
+            <h3 className="text-base md:text-lg font-bold text-gray-800">Vitamin & Mineral Imbalances</h3>
+            <p className="text-xs md:text-sm text-gray-600">
               Nutrients that Haru needs
             </p>
           </div>
         </div>
       </div>
       
-      <div className="p-6 relative">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+      <div className="p-3 md:p-6 relative">
+        <div className="grid grid-cols-2 gap-2 md:gap-3">
           {Object.entries(vitaminData).map(([nutrient, advice]) => (
             <div
               key={nutrient}
@@ -76,10 +76,10 @@ export default function VitaminMineralPanel({ vitaminData }) {
               onMouseEnter={(e) => handleMouseEnter(nutrient, e)}
               onMouseLeave={handleMouseLeave}
             >
-              <div className="flex items-center gap-3 p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-150 cursor-pointer border border-blue-200 hover:border-blue-300 h-full">
-                <span className="text-xl flex-shrink-0">{getVitaminIcon(nutrient)}</span>
+              <div className="flex items-center gap-2 p-2 md:p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-150 cursor-pointer border border-blue-200 hover:border-blue-300">
+                <span className="text-base md:text-lg flex-shrink-0">{getVitaminIcon(nutrient)}</span>
                 <div className="flex-1 min-w-0">
-                  <span className="text-sm font-medium text-blue-800 block leading-tight">
+                  <span className="text-xs md:text-sm font-medium text-blue-800 block leading-tight">
                     {nutrient}
                   </span>
                 </div>
