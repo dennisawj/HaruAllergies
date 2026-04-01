@@ -43,7 +43,7 @@ export default function App() {
               <div className="bg-slate-800/40 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-blue-300/20 shadow-2xl shadow-blue-900/50">
                 <div className="aspect-square rounded-xl sm:rounded-2xl overflow-hidden mb-4 sm:mb-6 shadow-lg ring-2 ring-blue-300/20">
                   <img
-                    src="/Haru.jpg"
+                    src="/HaruAllergies/Haru.jpg"
                     alt="Haru"
                     className="w-full h-full object-cover"
                   />

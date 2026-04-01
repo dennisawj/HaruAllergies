@@ -77,7 +77,7 @@ export default function MusicPlayer() {
     <>
       <audio
         ref={audioRef}
-        src="/øneheart x reidenshi - snowfall.mp3"
+        src="/HaruAllergies/øneheart x reidenshi - snowfall.mp3"
         loop
         preload="auto"
       />
